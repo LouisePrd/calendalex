@@ -45,7 +45,9 @@ export default function Home() {
     moveLogo();
 
     const popup = document.getElementById("popup") as HTMLDivElement | null;
-    const closeBtn = document.getElementById("closePopup") as HTMLButtonElement | null;
+    const closeBtn = document.getElementById(
+      "closePopup"
+    ) as HTMLButtonElement | null;
 
     if (popup && closeBtn) {
       logo.addEventListener("click", () => {
@@ -93,11 +95,18 @@ export default function Home() {
         <section className="advent-grid">
           {Array.from({ length: 24 }, (_, i) => {
             const day = i + 1;
-            const isUnlocked = day <= new Date().getDate() && new Date().getMonth() === 11;
+            const isUnlocked =
+              day <= new Date().getDate() && new Date().getMonth() === 11;
             return (
-              <div key={day} data-day={day} className={isUnlocked ? "" : "locked"}>
-                {isUnlocked && day <= 3 ? (
-                  <a href={`/advent/day${day}`}>{day}</a>
+              <div
+                key={day}
+                data-day={day}
+                className={isUnlocked ? "" : "locked"}
+              >
+                {isUnlocked ? (
+                  <a className="advent-cell" href={`/advent/day${day}`}>
+                    {day}
+                  </a>
                 ) : (
                   day
                 )}
@@ -130,8 +139,16 @@ export default function Home() {
       </div>
 
       <footer>
-        <img id="nerd-cat" src="/assets/nerd-cat.png" alt="Chat nerd avec lunettes" />
-        <img id="cat-christmas" src="/assets/cat-christmas.png" alt="Chat de Noël" />
+        <img
+          id="nerd-cat"
+          src="/assets/nerd-cat.png"
+          alt="Chat nerd avec lunettes"
+        />
+        <img
+          id="cat-christmas"
+          src="/assets/cat-christmas.png"
+          alt="Chat de Noël"
+        />
       </footer>
     </>
   );
