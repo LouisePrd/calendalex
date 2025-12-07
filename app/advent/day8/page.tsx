@@ -71,26 +71,6 @@ export default function Day8() {
         numHands: 1,
       };
 
-      // Fonction pour détecter le doigt d'honneur
-      function isMiddleFinger(landmarks: Landmark[]): boolean {
-        if (!landmarks || landmarks.length < 21) return false;
-
-        const thumbFolded = landmarks[4].y > landmarks[3].y;
-        const indexFolded = landmarks[8].y > landmarks[6].y;
-        const ringFolded = landmarks[16].y > landmarks[14].y;
-        const pinkyFolded = landmarks[20].y > landmarks[18].y;
-
-        const middleExtended = landmarks[12].y < landmarks[10].y - 0.02;
-
-        return (
-          middleExtended &&
-          thumbFolded &&
-          indexFolded &&
-          ringFolded &&
-          pinkyFolded
-        );
-      }
-
       const gestureRecognizer = await GestureRecognizer.createFromOptions(
         vision,
         gestureRecognizerOptions
@@ -125,12 +105,11 @@ export default function Day8() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         let handDetected = false;
-        let landmarks: Landmark[] = [];
 
         // Landmarks
         if (result?.landmarks?.[0]?.length) {
           handDetected = true;
-          landmarks = result.landmarks[0] as Landmark[];
+          const landmarks = result.landmarks[0] as Landmark[];
 
           ctx.fillStyle = "red";
           landmarks.forEach((lm) => {
@@ -168,18 +147,15 @@ export default function Day8() {
         // Geste détecté
         if (result?.gestures?.[0]?.[0]) {
           handDetected = true;
+          const gesture = result.gestures[0][0].categoryName;
+          infoBox.innerHTML = `<p>${gesture}</p>`;
 
-          if (isMiddleFinger(landmarks)) {
-            infoBox.innerHTML = "<p>Doigt d'honneur ! 😎</p>";
-            if (gestureImgRef.current)
-              gestureImgRef.current.src = "/assets/mediapipe/middlefinger.jpg";
-          } else {
-            const gesture = result.gestures[0][0].categoryName;
-            infoBox.innerHTML = `<p>${gesture}</p>`;
+          const imgPath = gestureMap[gesture];
 
-            const imgPath = gestureMap[gesture];
-            if (gestureImgRef.current && imgPath) {
+          if (gestureImgRef.current) {
+            if (imgPath) {
               gestureImgRef.current.src = imgPath;
+              gestureImgRef.current!.style.opacity = "1";
             }
           }
         } else if (!handDetected) {
@@ -247,6 +223,7 @@ export default function Day8() {
                 maxWidth: "150px",
                 height: "auto",
                 display: "block",
+                transition: "opacity 0.3s ease",
               }}
             />
           </div>
