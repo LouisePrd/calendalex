@@ -17,6 +17,7 @@ export default function Day7() {
     }
 
     const body = document.body;
+    const emojis: HTMLDivElement[] = [];
 
     function createPrisonEmoji() {
       const emoji = document.createElement("div");
@@ -25,6 +26,8 @@ export default function Day7() {
       emoji.style.top = "-50px";
       emoji.style.fontSize = Math.random() * 30 + 20 + "px";
       emoji.style.pointerEvents = "none";
+      emoji.style.willChange = "transform";
+
       if (Math.random() < 0.6) {
         emoji.style.zIndex = "10";
         emoji.textContent = "🚓";
@@ -35,28 +38,40 @@ export default function Day7() {
         emoji.style.zIndex = "5";
         emoji.textContent = "👮‍♀️";
       }
+
       body.appendChild(emoji);
+      emojis.push(emoji);
 
       let top = -50;
       const speed = Math.random() * 3 + 1;
 
       function fall() {
         top += speed;
-        emoji.style.top = top + "px";
+        emoji.style.transform = `translateY(${top}px)`;
         if (top < window.innerHeight) {
           requestAnimationFrame(fall);
         } else {
           emoji.remove();
+          emojis.splice(emojis.indexOf(emoji), 1);
         }
       }
+
       fall();
+
+      setTimeout(() => {
+        if (emoji.parentElement) {
+          emoji.remove();
+          emojis.splice(emojis.indexOf(emoji), 1);
+        }
+      }, 6000);
     }
 
     const interval = setInterval(createPrisonEmoji, 500);
 
-    return () => clearInterval(interval);
-
-    
+    return () => {
+      clearInterval(interval);
+      emojis.forEach(e => e.remove());
+    };
   }, []);
 
   return (
@@ -66,7 +81,7 @@ export default function Day7() {
         <h1>Jour 7 🎄</h1>
       </header>
       <p id="description">
-        Arrêté pour abus de twerk en plublic...
+        Suite aux folies d'hier, arrêté pour abus de twerk sur la voie publique...
       </p>
 
       <img
