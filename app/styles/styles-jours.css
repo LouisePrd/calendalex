@@ -2,9 +2,13 @@ html {
     background-color: #2C3923;
 }
 
-.day1, .day2, .day3, .day4, .day5 {
+.day1,
+.day2,
+.day3,
+.day4,
+.day5 {
     height: 100%;
-        background:
+    background:
         radial-gradient(circle at top center, rgba(255, 255, 255, 0.05), transparent 70%),
         linear-gradient(150deg, #2C3923 0%, #1e2a18 50%, #10150d 100%);
     background-attachment: fixed;
@@ -41,7 +45,7 @@ p {
     max-width: 700px;
     border-radius: 15px;
     border: 3px solid #ffffff;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     margin-top: 20px;
 }
 
@@ -67,7 +71,7 @@ button {
     margin-top: 15px;
     background-color: #91191B;
     background: linear-gradient(145deg, #c93030, #91191B);
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -79,15 +83,15 @@ button {
 button:hover {
     background-color: #b22224;
     background: linear-gradient(145deg, #ff4b4b, #b22224);
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
-canvas {
+#game {
     border: 3px solid #910202;
     border-radius: 10px;
     background-color: #f0f0f0;
     margin-top: 50px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 #logo-footer {
@@ -106,7 +110,8 @@ canvas {
     cursor: pointer;
 }
 
-#logo-footer:hover, #logo-footer6:hover {
+#logo-footer:hover,
+#logo-footer6:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
 }
@@ -156,7 +161,7 @@ canvas {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
     max-width: 1200px;
-    margin:20px auto;
+    margin: 20px auto;
 }
 
 #grid-photos .photo {
@@ -185,17 +190,49 @@ canvas {
 }
 
 @keyframes shake-scale {
-    0%   { transform: scale(1) translateX(0); }
-    10%  { transform: scale(1.05) translateX(-5px); }
-    20%  { transform: scale(1.05) translateX(5px); }
-    30%  { transform: scale(1.05) translateX(-5px); }
-    40%  { transform: scale(1.05) translateX(5px); }
-    50%  { transform: scale(1.05) translateX(-5px); }
-    60%  { transform: scale(1.05) translateX(5px); }
-    70%  { transform: scale(1.05) translateX(-5px); }
-    80%  { transform: scale(1.05) translateX(5px); }
-    90%  { transform: scale(1.05) translateX(-5px); }
-    100% { transform: scale(1) translateX(0); }
+    0% {
+        transform: scale(1) translateX(0);
+    }
+
+    10% {
+        transform: scale(1.05) translateX(-5px);
+    }
+
+    20% {
+        transform: scale(1.05) translateX(5px);
+    }
+
+    30% {
+        transform: scale(1.05) translateX(-5px);
+    }
+
+    40% {
+        transform: scale(1.05) translateX(5px);
+    }
+
+    50% {
+        transform: scale(1.05) translateX(-5px);
+    }
+
+    60% {
+        transform: scale(1.05) translateX(5px);
+    }
+
+    70% {
+        transform: scale(1.05) translateX(-5px);
+    }
+
+    80% {
+        transform: scale(1.05) translateX(5px);
+    }
+
+    90% {
+        transform: scale(1.05) translateX(-5px);
+    }
+
+    100% {
+        transform: scale(1) translateX(0);
+    }
 }
 
 #greve:hover {
@@ -210,7 +247,7 @@ canvas {
     max-width: 1600px;
     width: 100%;
     border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 #mugshot:hover {
@@ -234,26 +271,88 @@ canvas {
     cursor: pointer;
 }
 
-#logo-footer-7-left:hover, #logo-footer-7-right:hover {
+#logo-footer-7-left:hover,
+#logo-footer-7-right:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
 }
 
 .day-nav-container {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .day-nav-btn {
     margin-top: 0;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 10px;
-  transition: 0.2s ease;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: 0.2s ease;
 }
 
 .day-nav-btn:hover {
-  transform: translateY(-2px);
+    transform: translateY(-2px);
+}
+
+
+.day-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 320px;
+    height: 240px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+}
+
+#output-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.info-box {
+    width: fit-content;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.5rem;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#gesture-image {
+    width: 250px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+#gesture-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
 }
