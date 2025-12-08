@@ -188,7 +188,7 @@ export default function Day8() {
           <h1>Jour 8 🎄</h1>
         </header>
         <p id="description">Teste les gestes devant la caméra :)<br></br>
-        Gestes reconnus : ✊✌️✋👍👎☝️</p>
+        Gestes reconnus : ✊✌️✋👍👎☝️<br></br>&nbsp;</p>
 
         <div className="content-container">
           <div
