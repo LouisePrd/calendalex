@@ -10,7 +10,7 @@ Un [calendrier interactif](https://calendalex.netlify.app/) en ligne avec des ca
 - Next.js : framework Reac pour le rendu côté serveur et le routing
 - React : composants et gestion de l’état
 - Three.js : animations 3D
-- @mediapipe/tasks-vision pour les interactions basées sur les gestes
+- [@mediapipe/tasks-vision](https://ai.google.dev/edge/mediapipe/solutions/vision/gesture_recognizer?hl=fr) pour les interactions basées sur les gestes
 - API [Useless Facts](https://uselessfacts.jsph.pl/)
 
 ## Organisation du projet
