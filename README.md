@@ -4,7 +4,7 @@ Un [calendrier interactif](https://calendalex.netlify.app/) en ligne avec des ca
 ## Fonctionnalités
 - Navigation entre les jours du calendrier
 - Déblocage progressif des jours en fonction de la date
-- Contenu varié chaque jour (animations 3D, interactions, images…)
+- Contenu différent chaque jour (animations 3D, interactions, images…)
 
 ## Technos utilisées
 - Next.js : framework Reac pour le rendu côté serveur et le routing
