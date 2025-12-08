@@ -25,22 +25,22 @@ export default function Day9() {
   }
 
   useEffect(() => {
-          const today = new Date();
-      const month = today.getMonth();
-      const date = today.getDate();
-      const unlockDay = 9;
+    const today = new Date();
+    const month = today.getMonth();
+    const date = today.getDate();
+    const unlockDay = 9;
 
-      if (month !== 11 || date < unlockDay) {
-        alert(`Jour ${unlockDay} non disponible !`);
-        document.body.innerHTML = `
+    if (month !== 11 || date < unlockDay) {
+      alert(`Jour ${unlockDay} non disponible !`);
+      document.body.innerHTML = `
         <header class="header">
           <h1>Accès verrouillé</h1>
         </header>
         <main class="card">
           <p>Tssss arrête de tricher... #nerd </p>
         </main>`;
-        return;
-      }
+      return;
+    }
     fetchFact();
   }, []);
 
