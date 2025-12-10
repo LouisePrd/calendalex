@@ -1,0 +1,77 @@
+.giftWrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 90px auto 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.box {
+  position: absolute;
+  bottom: 0;
+  width: 200px;
+  height: 150px;
+  background: linear-gradient(#ff0707, #d40000);
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.ribbon {
+  position: absolute;
+  width: 40px;
+  height: 150px;
+  background: rgb(194, 10, 87);
+  left: 80px;
+  top: 0;
+  border-radius: 4px;
+  transition: all 0.5s ease;
+  z-index: 3;
+}
+
+.ribbonOff {
+  transform: translateY(-80px) rotate(90deg);
+  opacity: 0;
+}
+
+.lid {
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 50px;
+  background: linear-gradient(#ff0707, #d40000);
+  border-radius: 8px 8px 0 0;
+  transform-origin: bottom;
+  transition: all 0.6s ease;
+  z-index: 2;
+}
+
+.lidOpen {
+  transform: rotateX(80deg) translateY(-20px);
+}
+
+.giftContent {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  animation: pop 0.5s ease;
+  z-index: 4;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.surprise {
+  width: 120px;
+  height: auto;
+}
